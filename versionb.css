@@ -1,0 +1,96 @@
+body{
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    font-family:'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    text-align: right;
+    letter-spacing: 5px;
+    margin-bottom: 0;
+    font-size: 50px;
+}
+h2{
+    text-align: left;
+    background-color:rgb(113, 113, 113);
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    transform: translate(0px, -20px);
+    margin-bottom: 0;
+}
+h3{
+    background-color: rgb(192, 187, 187);
+    color: white;
+    transform: translate(0px, -20px);
+    margin-bottom: 0;
+}
+div{
+    background-color:rgba(255, 247, 247, 0.523);
+    border-radius: 10px;
+    flex: 1;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+div.e{
+    background-color: rgb(255, 166, 0);
+    border: 1px solid black;
+    width: 200px;
+    height: 10px;
+}
+div.f{
+    background-color: white;
+    margin: 15px;
+    border-radius: 0;
+}
+strong.d{
+    text-decoration: underline;
+    font-style: italic;
+    font-variant: normal;
+}
+strong{
+    font-variant: small-caps;
+}
+em{
+    color: red;
+}
+nav{
+    background-color: white;
+    color: rgb(3, 3, 135);
+    align-content: space-around;
+    box-shadow: 2px 2px 0px 0.5px rgba(0, 0, 0, 0.652);
+    width: 45px;
+    font-size: 10px;
+    position: fixed;
+    left: 0;
+}
+footer{
+    background-color: rgb(255, 162, 0);
+}
+img{
+    margin: 20px auto; 
+    display: block; 
+}
+p{
+    text-indent: 20px;
+    margin: 10px;
+}
+p.g{
+    text-align: right;
+}
+a:hover{
+    color: blue;
+}
+div.h{
+    background-color: rgba(246, 246, 246, 0);
+}
+div.j {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+span{
+    float: right;
+    font-size: 50px;
+}
