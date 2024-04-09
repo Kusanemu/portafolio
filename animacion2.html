@@ -2,11 +2,22 @@
 <html>
 <head>
 <style> 
-div {
+div.a {
   width: 100px;
   height: 100px;
   background-color: red;
   position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+  animation-direction: alternate-reverse;  
+}
+
+div.b {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position:relative;
   animation-name: example;
   animation-duration: 4s;
   animation-iteration-count: 2;
@@ -27,8 +38,9 @@ div {
 <h1>CSS Animation</h1>
 
 <p>The animation-direction property specifies whether an animation should be played forwards, backwards or in alternate cycles. The following example uses the value "alternate-reverse" to make the animation run backwards first, then forwards:</p>
-
-<div></div>
-
+<div>
+<div class="a"><img src="https://st5.depositphotos.com/5590000/65888/v/950/depositphotos_658886670-stock-illustration-hand-drawn-cute-cat-doodle.jpg" alt="gato"></div>
+<div class="b"> <img src="https://i.pinimg.com/564x/5e/e6/3a/5ee63a245aaed453a164a1e084b60c78.jpg" alt=""></div>
+</div>
 </body>
 </html>
