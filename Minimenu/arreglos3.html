@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Arreglos</h1>
+
+<h2>ordenación</h2>
+
+<p>Click en la opcion</p>
+
+<button onclick="generaarreglo()">Llenado arreglo</button>
+<button onclick="imprimearreglo()">Imprime arreglo</button>
+<button onclick="ordenaarreglo()">Ordenar arreglo</button>
+<button onclick="reversa()">Reversa arreglo</button>
+<button onclick="tabla()">Arreglo en tabla</button>
+<button onclick="agregar()">Agregar elemento</button>
+<button onclick="eliminar()">Eliminar elemento</button>
+<p id="demo"></p>
+
+<script>
+    var arreglo = [0, 0, 0, 0, 0, 0,]
+function generaarreglo() {
+    var n=arreglo.length;
+    for(i=0; i<n; i++)
+        arreglo[i]= Math.floor(Math.random()*100)+1;
+
+}
+function imprimearreglo() {
+    document.getElementById("demo").innerHTML = "Arreglo Resultante: "+arreglo;
+}
+function ordenaarreglo() {
+    arreglo=arreglo.sort(function(a, b){return a - b});
+}
+function reversa() {
+    arreglo=arreglo.reverse();
+}
+function tabla() {
+    var texto="";
+    texto=texto+"<table border=1><tr>";
+        var n=arreglo.length;
+        for(i=0; i<n; i++)
+        {
+            texto=texto+"<td>"+arreglo[i]+"</td>";
+        }
+    texto=texto+"</tr></table>";
+    document.getElementById("demo").innerHTML= texto;
+        
+}
+function agregar() {
+    /*var elemento=Math.floor(Math.random()*100)+1;
+    var n=arreglo.length;
+    arreglo.push(elemento);*/
+    arreglo+arreglo.push(elemento);
+}
+function eliminar() {
+    arreglo-arreglo.pop();
+}
+</script>
+</body>
+</html>

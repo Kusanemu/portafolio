@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Convertidor</title>
+    <script type="text/javascript">
+        function convertir(){
+            let num=parseInt(document.forms[0].grados.value);
+            let op=document.forms[0].opcion.value;
+            if(op==1){
+                num=num+273.15;
+                document.write("<p>"+num+"</p>");
+            }else{
+                num=(num*1.8)+32;
+                document.write("<p>"+num+"</p>");
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<form id="myform" onsubmit="return convertir();">
+<p>Grados Centrígrados <input id="grados" name="grados" type="text"></p>
+    <p>
+        <select name="opcion" id="opcion">
+            <option value="1">Kelvin</option>
+            <option value="2">Farenheit</option>
+        </select>
+    </p>
+    <p><input type="submit"/></p>
+</form>
+</body>
+</html>

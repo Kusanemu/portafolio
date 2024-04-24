@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Bienvenida del usuario</title>
+    <script type = "text/javascript">
+        function alertName() {
+            var veces1= parseInt(document.forms[0].veces.value);
+            for(i=1;i<=veces1;i++)
+            {
+                document.write("<h1>Este es un párrafo</h1>");
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<form id="myform" onsubmit="return alertName();">
+
+    <p>Cuantos párrafos <input id="veces" name="veces" type="text" /></p>
+
+    <p><input type="submit" /></p>
+
+</form>
+
+</body>
+
+</html>
