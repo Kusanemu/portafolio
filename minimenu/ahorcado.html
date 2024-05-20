@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego del Ahorcado</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        #palabra {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        #letras {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="200"></canvas><br>
+<div id="palabra"></div>
+<input type="text" id="letra" maxlength="1">
+<button onclick="adivinar()">Adivinar</button>
+<div id="letras"></div>
+
+<script>
+    const palabras = ["javascript", "ahorcado", "programacion", "desarrollo", "internet"];
+    let palabra = palabras[Math.floor(Math.random() * palabras.length)];
+    let palabraConGuiones = "_".repeat(palabra.length).split("");
+    let letrasAdivinadas = [];
+    let intentos = 0;
+
+    document.getElementById("palabra").innerHTML = palabraConGuiones.join(" ");
+
+    function inicializar() {
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Dibujar la base
+        ctx.beginPath();
+        ctx.moveTo(10, 190);
+        ctx.lineTo(190, 190);
+        ctx.stroke();
+
+        // Dibujar el poste vertical
+        ctx.beginPath();
+        ctx.moveTo(50, 190);
+        ctx.lineTo(50, 30);
+        ctx.stroke();
+
+        // Dibujar la cuerda horizontal
+        ctx.beginPath();
+        ctx.moveTo(50, 30);
+        ctx.lineTo(120, 30);
+        ctx.stroke();
+
+        // Dibujar la cuerda
+        ctx.beginPath();
+        ctx.moveTo(120, 30);
+        ctx.lineTo(120, 50);
+        ctx.stroke();
+    }
+
+    function dibujar() {
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        if (intentos >= 1) {
+            // Dibujar la cabeza
+            ctx.beginPath();
+            ctx.arc(120, 60, 10, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        if (intentos >= 2) {
+            // Dibujar el cuerpo
+            ctx.beginPath();
+            ctx.moveTo(120, 70);
+            ctx.lineTo(120, 110);
+            ctx.stroke();
+        }
+
+        if (intentos >= 3) {
+            // Dibujar el brazo izquierdo
+            ctx.beginPath();
+            ctx.moveTo(120, 80);
+            ctx.lineTo(100, 90);
+            ctx.stroke();
+        }
+
+        if (intentos >= 4) {
+            // Dibujar el brazo derecho
+            ctx.beginPath();
+            ctx.moveTo(120, 80);
+            ctx.lineTo(140, 90);
+            ctx.stroke();
+        }
+
+        if (intentos >= 5) {
+            // Dibujar la pierna izquierda
+            ctx.beginPath();
+            ctx.moveTo(120, 110);
+            ctx.lineTo(100, 140);
+            ctx.stroke();
+        }
+
+        if (intentos >= 6) {
+            // Dibujar la pierna derecha
+            ctx.beginPath();
+            ctx.moveTo(120, 110);
+            ctx.lineTo(140, 140);
+            ctx.stroke();
+        }
+    }
+
+    function adivinar() {
+        const letra = document.getElementById("letra").value.toLowerCase();
+        document.getElementById("letra").value = "";
+
+        if (letra.length !== 1 || letrasAdivinadas.includes(letra)) {
+            alert("Por favor ingrese una letra válida que no haya adivinado antes.");
+            return;
+        }
+
+        letrasAdivinadas.push(letra);
+        document.getElementById("letras").innerHTML = "Letras adivinadas: " + letrasAdivinadas.join(", ");
+
+        if (palabra.includes(letra)) {
+            for (let i = 0; i < palabra.length; i++) {
+                if (palabra[i] === letra) {
+                    palabraConGuiones[i] = letra;
+                }
+            }
+            document.getElementById("palabra").innerHTML = palabraConGuiones.join(" ");
+        } else {
+            intentos++;
+            dibujar();
+        }
+
+        if (!palabraConGuiones.includes("_")) {
+            alert("¡Felicidades, ganaste!");
+            reiniciar();
+        } else if (intentos >= 6) {
+            alert("Lo siento, perdiste. La palabra era " + palabra);
+            reiniciar();
+        }
+    }
+
+    function reiniciar() {
+        palabra = palabras[Math.floor(Math.random() * palabras.length)];
+        palabraConGuiones = "_".repeat(palabra.length).split("");
+        letrasAdivinadas = [];
+        intentos = 0;
+
+        document.getElementById("palabra").innerHTML = palabraConGuiones.join(" ");
+        document.getElementById("letras").innerHTML = "Letras adivinadas: ";
+        limpiar();
+        inicializar();
+    }
+
+    function limpiar() {
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Inicializar el dibujo base
+    inicializar();
+</script>
+</body>
+</html>

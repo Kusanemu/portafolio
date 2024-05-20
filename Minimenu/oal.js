@@ -22,5 +22,11 @@ function menu(variable){
         case 7:
             document.getElementById("frame").src="arreglos2.html";
             break;
+        case 8:
+            document.getElementById("frame").src="ahorcado.html";
+            break;
+        case 9:
+            document.getElementById("frame").src="test.html";
+            break;
     }
 }

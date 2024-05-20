@@ -14,4 +14,9 @@ function encriptar(){
     }
     console.log(texto);
     document.getElementById("mensaje").innerHTML=texto;
+    var doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.text(20, 20, 'Texto a codificar:\n' + cadena + '\n\nCodificacion:\n' + mensaje);
+    var string = doc.output('datauristring');
+    $('#pdfPreview').attr('src', string);
 }

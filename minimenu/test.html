@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bienvenida del usuario</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script type="text/javascript">
+        function resultados() {
+            let score = 0;
+            for (let i = 1; i <= 21; i++) {
+                const radios = document.getElementsByName(`p${i}`);
+                for (const radio of radios) {
+                    if (radio.checked) {
+                        score += parseInt(radio.value);
+                        break;
+                    }
+                }
+            }
+
+            let resultado = "";
+            if (score <= 12) {
+                resultado = "FASE DE APERTURA";
+            } else if (score <= 24) {
+                resultado = "FASE DE DOMINIO";
+            } else if (score <= 36) {
+                resultado = "FASE DE DEMOSTRACION";
+            } else if (score <= 48) {
+                resultado = "FASE DE RECONOCIMIENTO";
+            } else if (score <= 60) {
+                resultado = "FASE DE RIESGO INMINENTE";
+            } else {
+                resultado = "CONSUMACIÓN";
+            }
+
+            // Crear un PDF con jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text(`Tu resultado es: ${resultado}`, 10, 10);
+            doc.save('resultado.pdf');
+
+            return false; // Prevenir el envío del formulario
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h2>TEST PARA MEDIR EL NIVEL DE RIESGO DE VIOLENCIA PARA MUJERES EN EL ESTADO DE SLP</h2>
+    <p>INSTRUCCIONES: Lee cuidadosamente y responde una sola opción</p>
+    <form id="myform" onsubmit="return resultados();">
+        <div class="form-group">
+            <p>1. Dentro de tu núcleo familiar (padre, madre, hermanos) en algún momento vivieron violencia (amenazas, gritos, golpes)?</p>
+            <div class="form-check">
+                <input id="p1" name="p1" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p1" name="p1" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p1" name="p1" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p1" name="p1" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>2. ¿Tu pareja te cela?</p>
+            <div class="form-check">
+                <input id="p2" name="p2" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p2" name="p2" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p2" name="p2" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p2" name="p2" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>3. ¿Has sufrido descalificaciones o humillaciones en público por parte de tu pareja?</p>
+            <div class="form-check">
+                <input id="p3" name="p3" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p3" name="p3" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p3" name="p3" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p3" name="p3" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>4. ¿Tu pareja te responsabiliza de los problemas que tienen?</p>
+            <div class="form-check">
+                <input id="p4" name="p4" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p4" name="p4" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p4" name="p4" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p4" name="p4" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>5. ¿Te controla, todo el tiempo o quiere saber dónde estás?</p>
+            <div class="form-check">
+                <input id="p5" name="p5" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p5" name="p5" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p5" name="p5" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p5" name="p5" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>6. ¿Te chantajea, manipula o soborna para hacer cosas?</p>
+            <div class="form-check">
+                <input id="p6" name="p6" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p6" name="p6" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p6" name="p6" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p6" name="p6" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>7. ¿Te limita o prohibe hacer cosas?</p>
+            <div class="form-check">
+                <input id="p7" name="p7" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p7" name="p7" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p7" name="p7" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p7" name="p7" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>8. ¿Te controla o limita el recurso económico, o amenaza con quitártelo a ti y tus hijos?</p>
+            <div class="form-check">
+                <input id="p8" name="p8" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p8" name="p8" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p8" name="p8" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p8" name="p8" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>9. Durante las discusiones, ¿tu pareja se pone violenta y ha destruido objetos?</p>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>9. ¿Te limita o prohibe hacer cosas?</p>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>9. ¿Te controla o limita el recurso económico, o amenaza con quitártelo a ti y tus hijos?</p>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p9" name="p9" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="form-group">
+            <p>10. Durante las discusiones, ¿tu pareja se pone violenta y ha destruido objetos?</p>
+            <div class="form-check">
+                <input id="p10" name="p10" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p10" name="p10" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p10" name="p10" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p10" name="p10" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 11 -->
+        <div class="form-group">
+            <p>11. ¿Tu pareja te acaricia violentamente?</p>
+            <div class="form-check">
+                <input id="p11" name="p11" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p11" name="p11" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p11" name="p11" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p11" name="p11" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+        <!-- Pregunta 12 -->
+        <div class="form-group">
+            <p>12. ¿Cuando discutes con tu pareja, te hace agresiones físicas (empujones, patadas, puñetazos, jalones, te azota) con alguna arma (blanca o fuego) que te dejan marcas?</p>
+            <div class="form-check">
+                <input id="p12" name="p12" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p12" name="p12" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p12" name="p12" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p12" name="p12" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 13 -->
+        <div class="form-group">
+            <p>13. ¿Has recibido atención médica y/o psicológica por la violencia ejercida por tu pareja?</p>
+            <div class="form-check">
+                <input id="p13" name="p13" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p13" name="p13" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p13" name="p13" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p13" name="p13" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 14 -->
+        <div class="form-group">
+            <p>14. ¿Has realizado denuncias anteriormente por violencia familiar, acoso laboral y/o sexual o lesiones?</p>
+            <div class="form-check">
+                <input id="p14" name="p14" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p14" name="p14" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p14" name="p14" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p14" name="p14" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 15 -->
+        <div class="form-group">
+            <p>15. ¿Debido a la violencia decidiste separarte o terminar la relación?</p>
+            <div class="form-check">
+                <input id="p15" name="p15" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p15" name="p15" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p15" name="p15" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p15" name="p15" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+        <!-- Pregunta 16 -->
+        <div class="form-group">
+            <p>16. ¿Seguiste con el proceso de tu denuncia o la retiraste?</p>
+            <div class="form-check">
+                <input id="p16" name="p16" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p16" name="p16" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p16" name="p16" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p16" name="p16" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 17 -->
+        <div class="form-group">
+            <p>17. ¿Por qué motivo retiraste la denuncia?</p>
+            <div class="form-check">
+                <input id="p17" name="p17" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">AMOR</label>
+            </div>
+            <div class="form-check">
+                <input id="p17" name="p17" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">AMENAZAS</label>
+            </div>
+            <div class="form-check">
+                <input id="p17" name="p17" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">MIEDO</label>
+            </div>
+            <div class="form-check">
+                <input id="p17" name="p17" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">FALTA DE INTERES DE LAS AUTORIDADES</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 18 -->
+        <div class="form-group">
+            <p>18. ¿Los episodios de violencia ¿son más frecuentes y extremos?</p>
+            <div class="form-check">
+                <input id="p18" name="p18" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p18" name="p18" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p18" name="p18" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p18" name="p18" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <!-- Pregunta 19 -->
+        <div class="form-group">
+            <p>19. ¿Has recibido hostigamiento constante o amenazas de muerte por parte de tu agresor?</p>
+            <div class="form-check">
+                <input id="p19" name="p19" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p19" name="p19" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p19" name="p19" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p19" name="p19" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+        <!-- Pregunta 20 -->
+        <div class="form-group">
+            <p>20. ¿Tu agresor ya ha intentado matarte?</p>
+            <div class="form-check">
+                <input id="p20" name="p20" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p20" name="p20" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p20" name="p20" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p20" name="p20" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>21. ¿Tu agresor ya ha intentado matarte?</p>
+            <div class="form-check">
+                <input id="p21" name="p21" type="radio" value="3" class="form-check-input">
+                <label class="form-check-label">SI</label>
+            </div>
+            <div class="form-check">
+                <input id="p21" name="p21" type="radio" value="2" class="form-check-input">
+                <label class="form-check-label">A VECES</label>
+            </div>
+            <div class="form-check">
+                <input id="p21" name="p21" type="radio" value="1" class="form-check-input">
+                <label class="form-check-label">RARA VEZ</label>
+            </div>
+            <div class="form-check">
+                <input id="p21" name="p21" type="radio" value="0" class="form-check-input">
+                <label class="form-check-label">NO</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+</body>
+</html>
